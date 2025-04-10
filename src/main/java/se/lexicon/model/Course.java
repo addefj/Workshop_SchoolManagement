@@ -16,9 +16,9 @@ public class Course {
     //constructor
     public Course(String courseName, LocalDate startDate, int weekDuration) {
         this.id = getNextId();
-        this.courseName = courseName;
-        this.startDate = startDate;
-        this.weekDuration = weekDuration;
+        setCourseName(courseName);
+        setStartDate(startDate);
+        setWeekDuration(weekDuration);
     }
 
     //getters and setters
@@ -35,6 +35,7 @@ public class Course {
     }
 
     public void setStartDate(LocalDate startDate) {
+        validateInput(startDate, "Course start");
         this.startDate = startDate;
     }
 
@@ -43,6 +44,7 @@ public class Course {
     }
 
     public void setCourseName(String courseName) {
+        validateInput(courseName, "Course Name");
         this.courseName = courseName;
     }
 
@@ -51,6 +53,7 @@ public class Course {
     }
 
     public void setWeekDuration(int weekDuration) {
+        validateInput(weekDuration, "Week duration");
         this.weekDuration = weekDuration;
     }
 
@@ -74,4 +77,19 @@ public class Course {
                 ", weekDuration: " + weekDuration +
                 ", students: " + students + "\n";
     }
+
+    private static void validateInput(String input, String inputName) {
+        if(input == null || input.trim().isEmpty()) throw new IllegalArgumentException(inputName + " can't be null or empty");
+    }
+
+    private static void validateInput(LocalDate input, String inputName) {
+        if(input == null) throw new IllegalArgumentException(inputName + " can't be null");
+        if(input.isBefore(LocalDate.now())) throw new IllegalArgumentException(inputName + " can't be before today");
+    }
+
+    private static void validateInput(int input, String inputName) {
+        if(input < 0) throw new IllegalArgumentException(inputName + " can't be less than zero");
+    }
+
+
 }

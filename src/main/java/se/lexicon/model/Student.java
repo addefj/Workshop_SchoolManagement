@@ -12,9 +12,9 @@ public class Student {
     //constructor
     public Student(String name, String email, String address) {
         this.id = getNextId();
-        this.name = name;
-        this.email = email;
-        this.address = address;
+        setName(name);
+        setEmail(email);
+        setAddress(address);
     }
 
     //getters and setters
@@ -31,6 +31,7 @@ public class Student {
     }
 
     public void setName(String name) {
+        validateInput(name, "Student Name");
         this.name = name;
     }
 
@@ -39,6 +40,7 @@ public class Student {
     }
 
     public void setEmail(String email) {
+        validateInput(email, "Email");
         this.email = email;
     }
 
@@ -47,6 +49,7 @@ public class Student {
     }
 
     public void setAddress(String address) {
+        validateInput(address, "Address");
         this.address = address;
     }
 
@@ -54,5 +57,10 @@ public class Student {
     public String toString() {
         return "id: " + id +
                 ", name: " + name + ", email: " + email + ", address: " + address + "\n";
+
+    }
+
+    private static void validateInput(String input, String inputName) {
+        if(input == null || input.isEmpty()) throw new IllegalArgumentException(inputName + " can't be null or empty");
     }
 }
