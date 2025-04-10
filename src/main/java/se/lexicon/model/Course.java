@@ -6,15 +6,16 @@ import java.util.ArrayList;
 public class Course {
 
     //fields
-    private int id;
+    private static int sequencer;
+    private final int id;
     private String courseName;
     private LocalDate startDate;
     private int weekDuration;
-    private ArrayList<Student> students;
+    private ArrayList<Student> students = new ArrayList<>();
 
     //constructor
-    public Course(int id, String courseName, LocalDate startDate, int weekDuration) {
-        this.id = id;
+    public Course(String courseName, LocalDate startDate, int weekDuration) {
+        this.id = getNextId();
         this.courseName = courseName;
         this.startDate = startDate;
         this.weekDuration = weekDuration;
@@ -25,8 +26,8 @@ public class Course {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getNextId(){
+        return ++sequencer;
     }
 
     public LocalDate getStartDate() {
@@ -57,10 +58,6 @@ public class Course {
         return students;
     }
 
-    public void setStudents(ArrayList<Student> students) {
-        this.students = students;
-    }
-
     //other methods
     public void register(Student student){
         this.students.add(student);
@@ -68,5 +65,13 @@ public class Course {
 
     public void unregister(Student student){
         this.students.remove(student);
+    }
+
+    @Override
+    public String toString() {
+        return "id: " + id + ", courseName: " + courseName +
+                ", startDate: " + startDate +
+                ", weekDuration: " + weekDuration +
+                ", students: " + students + "\n";
     }
 }

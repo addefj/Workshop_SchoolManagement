@@ -31,7 +31,7 @@ public class CourseDaoImpl implements ICourseDao{
     public ArrayList<Course> findByName(String name) {
         ArrayList<Course> matchingCourses = new ArrayList<>();
         for(Course course: courses){
-            if (course.getCourseName().equals(name)){
+            if (course.getCourseName().toLowerCase().contains(name.toLowerCase())){
                 matchingCourses.add(course);
             }
         }

@@ -3,14 +3,15 @@ package se.lexicon.model;
 public class Student {
 
     //fields
-    private int id;
+    private static int sequencer;
+    private final int id;
     private String name;
     private String email;
     private String address;
 
     //constructor
-    public Student(int id, String name, String email, String address) {
-        this.id = id;
+    public Student(String name, String email, String address) {
+        this.id = getNextId();
         this.name = name;
         this.email = email;
         this.address = address;
@@ -21,8 +22,8 @@ public class Student {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getNextId(){
+        return ++sequencer;
     }
 
     public String getName() {
@@ -47,5 +48,11 @@ public class Student {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "id: " + id +
+                ", name: " + name + ", email: " + email + ", address: " + address + "\n";
     }
 }

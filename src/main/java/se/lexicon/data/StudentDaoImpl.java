@@ -31,7 +31,7 @@ public class StudentDaoImpl implements IStudentDao{
     public ArrayList<Student> findByName(String name) {
         ArrayList<Student> matchingStudents = new ArrayList<>();
         for (Student student: students){
-            if (student.getName().equals(name)){
+            if (student.getName().toLowerCase().contains(name.toLowerCase())){
                 matchingStudents.add(student);
             }
         }
