@@ -1,4 +1,4 @@
-package se.lexicon.DAO;
+package se.lexicon.data;
 
 import se.lexicon.model.Course;
 

@@ -1,4 +1,4 @@
-package se.lexicon.DAO;
+package se.lexicon.data;
 
 import se.lexicon.model.Student;
 
@@ -16,7 +16,7 @@ public interface IStudentDao {
 
     ArrayList<Student> findAll();
 
-    boolean deleter(Student student);
+    boolean delete(Student student);
 
 
 }
