@@ -21,6 +21,14 @@ public class Course {
         setWeekDuration(weekDuration);
     }
 
+    //default constructor for unit tests
+    public Course(){
+        this.id = getNextId();
+        setCourseName("default");
+        setStartDate(LocalDate.now());
+        setWeekDuration(0);
+    }
+
     //getters and setters
     public int getId() {
         return id;
@@ -63,10 +71,12 @@ public class Course {
 
     //other methods
     public void register(Student student){
+        validateInput(student, "Register student");
         this.students.add(student);
     }
 
     public void unregister(Student student){
+        validateInput(student, "Unregister student");
         this.students.remove(student);
     }
 
@@ -89,6 +99,10 @@ public class Course {
 
     private static void validateInput(int input, String inputName) {
         if(input < 0) throw new IllegalArgumentException(inputName + " can't be less than zero");
+    }
+
+    private static void validateInput(Student input, String inputName) {
+        if(input == null) throw new IllegalArgumentException(inputName + " can't be null");
     }
 
 

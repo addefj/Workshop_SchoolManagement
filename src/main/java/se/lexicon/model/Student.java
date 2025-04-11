@@ -17,7 +17,7 @@ public class Student {
         setAddress(address);
     }
 
-    //for unit testing
+    //default constructor for unit tests
     public Student(){
         this.id = getNextId();
         setName("default");

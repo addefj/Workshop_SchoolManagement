@@ -1,5 +1,7 @@
 package se.lexicon;
 
+import se.lexicon.data.CourseDaoImpl;
+import se.lexicon.data.StudentDaoImpl;
 import se.lexicon.model.Course;
 import se.lexicon.model.Student;
 
@@ -18,6 +20,10 @@ public class Main {
         Course course2 = new Course("Physics A", LocalDate.parse("2025-06-20"), 15 );
         Course course3 = new Course("English A", LocalDate.parse("2025-09-25"), 11 );
         Course course4 = new Course("Chemistry A", LocalDate.parse("2025-09-25"), 10 );
+
+        StudentDaoImpl students = new StudentDaoImpl();
+        students.save(student1);
+        students.save(student4);
 
     }
 }

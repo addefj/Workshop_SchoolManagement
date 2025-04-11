@@ -83,9 +83,9 @@ public class PersonTest {
     public void TestSetAddress(){
 
         Student student = new Student();
-        student.setAddress("Testvägen 7");
+        student.setAddress("Testgatan 7");
 
-        assertEquals("Testvägen 7", student.getAddress());
+        assertEquals("Testgatan 7", student.getAddress());
     }
 
     @Test

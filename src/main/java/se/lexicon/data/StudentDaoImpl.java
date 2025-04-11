@@ -13,6 +13,7 @@ public class StudentDaoImpl implements IStudentDao{
     //methods
     @Override
     public Student save(Student student) {
+        validateInput(student, "Save student input");
         this.students.add(student);
         return student;
     }
@@ -57,4 +58,9 @@ public class StudentDaoImpl implements IStudentDao{
     public boolean delete(Student student) {
         return this.students.remove(student);
     }
+
+    private static void validateInput(Student input, String inputName) {
+        if(input == null) throw new IllegalArgumentException(inputName + " can't be null");
+    }
+
 }
