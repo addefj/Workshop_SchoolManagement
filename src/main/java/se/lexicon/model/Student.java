@@ -17,6 +17,14 @@ public class Student {
         setAddress(address);
     }
 
+    //for unit testing
+    public Student(){
+        this.id = getNextId();
+        setName("default");
+        setEmail("default");
+        setAddress("default");
+    }
+
     //getters and setters
     public int getId() {
         return id;
